@@ -1,8 +1,7 @@
 # ✋ Gestura – Bridging Silence with AI 🤖  
 > A real-time sign-language translator made with ❤️ using **Python, MediaPipe & OpenCV**
-
-![GitHub Repo stars](https://img.shields.io/github/stars/Shristirajpoot/Gestura?style=social)
-![GitHub last commit](https://img.shields.io/github/last-commit/Shristirajpoot/Gestura?color=brightgreen)
+![GitHub Repo stars](https://img.shields.io/github/stars/Shristirajpoot/Gestura-Retail-Accessibility-AI?style=social)
+![GitHub last commit](https://img.shields.io/github/last-commit/Shristirajpoot/Gestura-Retail-Accessibility-AI?color=brightgreen)
 ![Built with](https://img.shields.io/badge/Built%20with-Python%20%7C%20MediaPipe%20%7C%20OpenCV-blue)
 
 ---
