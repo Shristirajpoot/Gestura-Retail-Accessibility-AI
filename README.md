@@ -14,9 +14,9 @@
 
 ## 🎥 Demo Video  
 📺 **Watch the full walkthrough:**  
-[![Gestura – Demo](https://img.youtube.com/vi/sVI3OwGbkoI/0.jpg)](https://youtu.be/sVI3OwGbkoI)
+[![Gestura – Demo](https://img.youtube.com/vi/eQEPefRtuNg/0.jpg)](https://youtu.be/eQEPefRtuNg)
 
-> 🔗 *Click the image or [watch on YouTube](https://youtu.be/sVI3OwGbkoI)*
+> 🔗 *Click the image or [watch on YouTube](https://youtu.be/eQEPefRtuNg)*
   
 
 ---
