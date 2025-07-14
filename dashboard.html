@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Language Translator</title>
+
+    <style>
+        /* Global Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #4b6cb7, #182848);
+            color: #fff;
+            overflow-x: hidden;
+            animation: gradientShift 1s ease infinite; 
+        }
+
+        @keyframes gradientShift {
+            0% { background: linear-gradient(135deg, #4b6cb7, #182848); }
+            50% { background: linear-gradient(135deg, #182848, #4b6cb7); }
+            100% { background: linear-gradient(135deg, #4b6cb7, #182848); }
+        }
+       h1, h2, p {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar-brand {
+            font-size: 1.9rem;
+            font-weight: bold;
+            color: #fdbb2d;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+            text-decoration: none;
+        }
+
+        /* Navigation Links */
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #fff;
+            font-size: 1.1rem;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #fdbb2d;
+            text-decoration: underline;
+        }
+
+        /* Container Styles */
+        .container {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.5);
+        }
+
+        .heading {
+            text-align: center;
+            font-size: 3rem;
+            font-weight: bold;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+            margin-bottom: 1.5rem;
+            color: #fdbb2d;
+        }
+
+        .subheading {
+            text-align: center;
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            color: #ddd;
+            font-weight: 300;
+        }
+
+        /* Form & Button Styles */
+        .form-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 300px;
+        }
+
+        .form-group label {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #fdbb2d;
+        }
+
+        .form-group input {
+            padding: 1rem;
+            font-size: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 280px;
+            margin-bottom: 1.5rem;
+            box-sizing: border-box;
+            background-color: #2c3e50;
+            color: #fff;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .form-group input:focus {
+            border-color: #fdbb2d;
+            box-shadow: 0 0 5px rgba(253, 187, 45, 0.7);
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 30px;
+            background: linear-gradient(90deg, #ff8c00, #ffa500);
+            color: #fff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 0.8rem;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            background: linear-gradient(90deg, #ffa500, #ff8c00);
+        }
+
+        /* Camera Feed Styles */
+        .camera-feed {
+            display: none;
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+        .camera-feed img {
+            width: 80%;
+            border-radius: 15px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.5);
+            border: 5px solid #fdbb2d;
+        }
+
+        /* Footer Styles */
+        .footer {
+            text-align: center;
+            padding: 1.2rem;
+            background: rgba(0, 0, 0, 0.8);
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+            color: #fdbb2d;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .footer a {
+            color: #fdbb2d;
+            text-decoration: none;
+        }
+
+        /* Media Queries for Responsiveness */
+        @media (max-width: 768px) {
+            .heading {
+                font-size: 2rem;
+            }
+
+            .subheading {
+                font-size: 1rem;
+            }
+
+            .form-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .form-group input,
+            .btn {
+                width: 90%;
+            }
+
+            .camera-feed img {
+                width: 100%;
+            }/* Navbar Styles */
+       
+
+        }
+    </style>
+</head>
+
+<body>  <nav class="navbar">
+    <a class="navbar-brand" href="{{ url_for('index') }}">  <img src="{{ url_for('static', filename='icon.webp') }}" alt="App Icon" style="width: 30px; height: 30px; margin-right: 10px;">
+        <span>Gestura</a>
+    <div class="nav-links">
+        <a href="{{ url_for('index') }}">Home</a>
+        <a href="{{ url_for('dashboard') }}">Dashboard</a>
+        <a href="{{ url_for('profile') }}">Profile</a>
+        <a href="{{ url_for('settings') }}">Settings</a>
+           <a href="{{ url_for('contact') }}">Contact</a>
+        <a href="{{ url_for('feedback') }}">Feedback</a>
+        <a href="{{ url_for('logout') }}">Logout</a>
+    </div>
+</nav>
+    </nav>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      <ul class="flashed-messages">
+        {% for category, message in messages %}
+          <li class="flash-{{ category }}">{{ message }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  {% endwith %}
+  
+    <div class="container">
+        <h1 class="heading">Sign Language Translator</h1>
+        <p class="subheading">Seamlessly translate sign language gestures into text with AI-powered technology.</p>
+
+        <!-- Form Container for inputs (if any) -->
+        <div class="form-container">
+            <div class="form-group">
+                <label for="sign-language-input">Enter Sign Language Text</label>
+                <input type="text" id="sign-language-input" placeholder="Type or use camera for sign translation">
+            </div>
+            <div class="form-group">
+                <button id="startCameraButton" class="btn">Start Camera</button>
+                <button id="closeCameraButton" class="btn" style="display: none;">Close Camera</button>
+            </div>
+        </div>
+
+        <div id="cameraFeedContainer" class="camera-feed">
+            <h2>Camera Feed</h2>
+            <img id="cameraFeed" src="" alt="Camera Feed">
+        </div>
+
+    </div>
+    
+
+    <footer class="footer">
+        <p>&copy; 2025 Sign Language Translator. All rights reserved. <a href="#">Privacy Policy</a></p>
+    </footer>
+    <button id="sound-toggle" class="btn" style="position: fixed; bottom: 20px; right: 20px; padding: 5px 10px; font-size: 12px; cursor: pointer; background-color: #007bff; color: white; border: none; border-radius: 5px;">
+        Play
+      </button>
+      
+    <audio id="gesture-sound" src="{{ url_for('static', filename='Gratitude_Spiritual-Moment.mp3') }}" preload="auto">play</audio>
+    
+    <script>
+        const startCameraButton = document.getElementById('startCameraButton');
+        const closeCameraButton = document.getElementById('closeCameraButton');
+        const cameraFeedContainer = document.getElementById('cameraFeedContainer');
+        const cameraFeed = document.getElementById('cameraFeed');
+
+        startCameraButton.addEventListener('click', () => {
+            cameraFeedContainer.style.display = 'block';
+            cameraFeed.src = "{{ url_for('video_feed') }}";
+            startCameraButton.style.display = 'none';
+            closeCameraButton.style.display = 'inline-block';
+        });
+
+        closeCameraButton.addEventListener('click', () => {
+            cameraFeedContainer.style.display = 'none';
+            cameraFeed.src = "";
+            closeCameraButton.style.display = 'none';
+            startCameraButton.style.display = 'inline-block';
+            
+    // Apply saved theme from localStorage when the page loads
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    document.body.setAttribute('data-theme', savedTheme);
+  
+        });
+    // Track sound status globally
+    let soundEnabled = localStorage.getItem('soundEnabled') === 'true'; // Get saved state from localStorage
+
+    // Get references to the audio element and the sound toggle button
+    const sound = document.getElementById('gesture-sound');
+    const soundToggleButton = document.getElementById('sound-toggle');
+
+    // Update the button text based on the saved state
+    if (soundEnabled) {
+        soundToggleButton.textContent = 'Stop';  // Change to 'Stop' if sound is enabled
+        sound.play();
+    } else {
+        soundToggleButton.textContent = 'Play';  // Change to 'Play' if sound is not enabled
+        sound.pause();
+    }
+
+    // Function to play/stop the sound and toggle the button text
+    soundToggleButton.addEventListener('click', () => {
+        if (soundEnabled) {
+            // Stop the sound
+            sound.pause();
+            sound.currentTime = 0; // Reset the sound to the beginning
+
+            // Change button text to 'Play'
+            soundToggleButton.textContent = 'Play';
+        } else {
+            // Play the sound
+            sound.play();
+
+            // Change button text to 'Stop'
+            soundToggleButton.textContent = 'Stop';
+        }
+
+        // Toggle soundEnabled state and save it to localStorage
+        soundEnabled = !soundEnabled;
+        localStorage.setItem('soundEnabled', soundEnabled);
+    });
+
+    </script>
+</body>
+
+</html>
